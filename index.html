@@ -54,22 +54,26 @@
     </div>
     
     <footer>
-        <a href="https://github.com/itsFrdow" target="_blank">
+        <a href="https://github.com/Anujesh-Ansh" target="_blank">
             <p>Made for you (enjoy the music) &hearts;</p>
         </a>
         <br />
         
-        <audio id="bg-music" autoplay loop>
+        <audio id="bg-music" autoplay loop muted>
             <source src="Yung Kai - Blue.mp3" type="audio/mpeg" />
             Your browser does not support the audio element.
         </audio>
     </footer>
 
     <script>
-        window.addEventListener("DOMContentLoaded", function() {
+        document.addEventListener("DOMContentLoaded", function() {
             const audio = document.getElementById("bg-music");
-            audio.muted = false; 
-            audio.play().catch(error => console.log("Autoplay blocked:", error));
+
+            // Ensure the audio is loaded before playing
+            audio.addEventListener("canplaythrough", () => {
+                audio.muted = false;
+                audio.play().catch(error => console.log("Autoplay blocked:", error));
+            });
         });
     </script>
 
