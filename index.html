@@ -53,21 +53,33 @@
 
     </div>
     
-    
-
     <footer>
         <a href="https://github.com/Anujesh-Ansh" target="_blank">
             <p>Made for you (enjoy the music) &hearts;</p>
         </a>
-         
-    </footer>
-    <br />
-         <audio controls autoplay loop>
-      <source src="Yung Kai - Blue.mp3" type="audio/mpeg" />
-      Your browser does not support the audio element.
-    </audio>
+        <br />
+        
+        <audio id="bg-music" autoplay loop muted>
+            <source src="Yung Kai - Blue.mp3" type="audio/mpeg" />
+            Your browser does not support the audio element.
+        </audio>
 
-    
-    <script src="script.js"></script>
+        <button onclick="playMusic()">🔊 Enable Sound</button>
+    </footer>
+
+    <script>
+        window.addEventListener("DOMContentLoaded", function() {
+            const audio = document.getElementById("bg-music");
+            audio.muted = false; 
+            audio.play().catch(error => console.log("Autoplay blocked:", error));
+        });
+
+        function playMusic() {
+            const audio = document.getElementById("bg-music");
+            audio.muted = false;
+            audio.play();
+        }
+    </script>
+
 </body>
 </html>
