@@ -59,23 +59,24 @@
         </a>
         <br />
         
-        <audio id="bg-music" autoplay loop muted>
+        <audio id="bg-music" autoplay loop>
             <source src="Yung Kai - Blue.mp3" type="audio/mpeg" />
             Your browser does not support the audio element.
         </audio>
     </footer>
 
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
+        document.addEventListener("click", function() {
             const audio = document.getElementById("bg-music");
+            audio.play().catch(error => console.log("Autoplay blocked, user interaction required."));
+        });
 
-            // Ensure the audio is loaded before playing
-            audio.addEventListener("canplaythrough", () => {
-                audio.muted = false;
-                audio.play().catch(error => console.log("Autoplay blocked:", error));
-            });
+        window.addEventListener("load", function() {
+            const audio = document.getElementById("bg-music");
+            audio.play().catch(error => console.log("Autoplay blocked, waiting for user interaction."));
         });
     </script>
 
+    <script src="script.js"></script>
 </body>
 </html>
