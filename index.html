@@ -60,25 +60,28 @@
         </a>
         <br />
         
-        <!-- Preload added to minimize delay -->
-        <audio id="bg-music" autoplay loop preload="auto">
-            <source src="la vie en rose (cover)" type="audio/mpeg" />
-            Your browser does not support the audio element.
-        </audio>
-    </footer>
+<!-- Audio Player -->
+<audio id="bg-music" loop preload="auto">
+    <source src="la vie en rose (cover).mp3" type="audio/mpeg" />
+    Your browser does not support the audio element.
+</audio>
 
-    <script>
-        document.addEventListener("click", function() {
-            const audio = document.getElementById("bg-music");
-            audio.play().catch(error => console.log("Autoplay blocked, user interaction required."));
-        });
+<!-- Play Music Button -->
+<button id="play-music-btn" style="position: fixed; bottom: 20px; right: 20px; padding: 10px 20px; font-size: 16px;">
+    🎵 Play Music
+</button>
 
-        window.addEventListener("load", function() {
-            const audio = document.getElementById("bg-music");
-            audio.play().catch(error => console.log("Autoplay blocked, waiting for user interaction."));
-        });
-    </script>
+<script>
+    const playBtn = document.getElementById("play-music-btn");
+    const bgMusic = document.getElementById("bg-music");
 
-    <script src="script.js"></script>
-</body>
-</html>
+    playBtn.addEventListener("click", function () {
+        bgMusic.play()
+            .then(() => {
+                playBtn.style.display = "none"; // Hide button once music plays
+            })
+            .catch(error => {
+                console.error("Playback failed:", error);
+            });
+    });
+</script>
