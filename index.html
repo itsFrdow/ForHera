@@ -68,31 +68,28 @@
 </head>
 <body>
 
-    <!-- Hidden Audio Element -->
-    <audio id="bg-music" loop preload="auto">
-        <source src="la_vie_en_rose.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-    </audio>
+   <audio id="bg-music" loop preload="auto">
+    <source src="la_vie_en_rose.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
 
-    <script>
-        // Trigger music on first user interaction
-        function startMusicOnce() {
-            const audio = document.getElementById("bg-music");
-            audio.play().catch(err => {
-                console.error("Autoplay failed:", err);
-            });
+<script>
+    function startMusicOnce() {
+        const audio = document.getElementById("bg-music");
 
-            // Remove this event after first use
-            document.removeEventListener("click", startMusicOnce);
-            document.removeEventListener("keydown", startMusicOnce);
-            document.removeEventListener("touchstart", startMusicOnce);
-        }
+        // Try to play audio on interaction
+        audio.play().catch(err => {
+            console.warn("Autoplay failed:", err);
+        });
 
-        // Listen for the first user interaction
-        document.addEventListener("click", startMusicOnce);
-        document.addEventListener("keydown", startMusicOnce);
-        document.addEventListener("touchstart", startMusicOnce);
-    </script>
+        // Remove listeners after first trigger
+        document.removeEventListener("pointerdown", startMusicOnce);
+    }
+
+    // Use 'pointerdown' instead of 'click' or 'keydown' for broadest, non-intrusive interaction
+    document.addEventListener("pointerdown", startMusicOnce, { once: true });
+</script>
+
 
 </body>
 </html>
