@@ -1,94 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Letter &hearts;</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Zeyada&display=swap" rel="stylesheet">
-    <link rel="icon" href="./assets/heart-svgrepo-com.svg">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Letter &hearts;</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Zeyada&display=swap" rel="stylesheet" />
+  <link rel="icon" href="./assets/heart-svgrepo-com.svg" />
 </head>
 <body>
 
-    <div class="main">
-        <div class="paper paper1">
-         <img src="./assets/heart-svgrepo-com.svg" alt="" srcset="">
-        </div>
-
-        <div class="paper paper2">
-            <p>Hello Hera, this is Alfre!</p>
-            <p>😜</p>
-        </div>
-
-        <div class="paper paper3">
-            <p style="font-style: italic;">First of all,</p>
-        </div>
-        
-        <div class="paper paper4">
-            <p>HAPPY BIRTHDAY,</p>
-        </div>
-
-        <div class="paper paper5">
-            <img src="happybirthday.jpg" alt="" srcset="">
-        </div>
-        
-     <div class="paper paper6">
-            <p>I always wish you the best always no matter what you do.</p>
-        </div>
-
-        <div class="paper paper7">
-    <p>I'm sorry I couldn't be there to celebrate your special day with you &hearts;</p>
-        </div>
-        <div class="paper paper8">
-        <p>so, I've made this to hopefully make you happier even for a bit.</p>
-        </div>
-        <div class="paper paper9">
-            <p>    Happy Birthday Hera </p>
-            <p>           4/06/2025          </p>
-            <p>    By yours truly &hearts;</p>
-        </div>
-                <div class="paper paper10">
-  <img src="hera.jpg"  alt="" srcset="">
-        </div>
-
+  <!-- Your Papers -->
+  <div class="main">
+    <div class="paper paper1">
+      <img src="./assets/heart-svgrepo-com.svg" alt="" />
     </div>
-    
-    <footer>
-            <p>我爱你, 爱人!!! &hearts; &hearts; &hearts;</p>
-        </a>
-        <br />
-        
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Background Music Autoplay</title>
-</head>
-<body>
 
-      <!-- Preload added to minimize delay -->
-        <audio id="bg-music" autoplay loop preload="auto">
-            <source src="la vie en rose (cover)" type="audio/mpeg" />
-            Your browser does not support the audio element.
-        </audio>
-    </footer>
+    <div class="paper paper2">
+      <p>Hello Hera, this is Alfre!</p>
+      <p>😜</p>
+    </div>
 
-    <script>
-        document.addEventListener("click", function() {
-            const audio = document.getElementById("bg-music");
-            audio.play().catch(error => console.log("Autoplay blocked, user interaction required."));
-        });
+    <div class="paper paper3">
+      <p style="font-style: italic;">First of all,</p>
+    </div>
 
-        window.addEventListener("load", function() {
-            const audio = document.getElementById("bg-music");
-            audio.play().catch(error => console.log("Autoplay blocked, waiting for user interaction."));
-        });
-    </script>
+    <div class="paper paper4">
+      <p>HAPPY BIRTHDAY,</p>
+    </div>
 
-    <script src="script.js"></script>
+    <div class="paper paper5">
+      <img src="happybirthday.jpg" alt="" />
+    </div>
+
+    <div class="paper paper6">
+      <p>I always wish you the best always no matter what you do.</p>
+    </div>
+
+    <div class="paper paper7">
+      <p>I'm sorry I couldn't be there to celebrate your special day with you &hearts;</p>
+    </div>
+
+    <div class="paper paper8">
+      <p>so, I've made this to hopefully make you happier even for a bit.</p>
+    </div>
+
+    <div class="paper paper9">
+      <p>Happy Birthday Hera</p>
+      <p>4/06/2025</p>
+      <p>By yours truly &hearts;</p>
+    </div>
+
+    <div class="paper paper10">
+      <img src="hera.jpg" alt="" />
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>我爱你, 爱人!!! &hearts; &hearts; &hearts;</p>
+  </footer>
+
+  <!-- Background Music -->
+  <audio id="bg-music" loop preload="auto">
+    <source src="la_vie_en_rose.mp3" type="audio/mpeg" />
+    Your browser does not support the audio element.
+  </audio>
+
+  <!-- Music Autoplay Trigger Script -->
+  <script>
+    function startMusicOnce() {
+      const audio = document.getElementById("bg-music");
+      audio.play().catch(err => {
+        console.warn("Autoplay failed:", err);
+      });
+      document.removeEventListener("pointerdown", startMusicOnce);
+    }
+
+    document.addEventListener("pointerdown", startMusicOnce, { once: true });
+  </script>
+
+  <!-- Your external JS -->
+  <script src="script.js"></script>
 </body>
 </html>
-
-</script>
