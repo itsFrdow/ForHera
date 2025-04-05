@@ -1,51 +1,109 @@
-<!-- Background Music -->
-<audio id="bg-music" preload="auto" loop>
-  <source src="la_vie_en_rose.mp3" type="audio/mpeg" />
-  Your browser does not support the audio element.
-</audio>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Letter &hearts;</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Zeyada&display=swap" rel="stylesheet" />
+  <link rel="icon" href="./assets/heart-svgrepo-com.svg" />
+</head>
+<body>
 
-<!-- Overlay -->
-<div id="start-overlay" style="
-  position: fixed;
-  inset: 0;
-  background: white;
-  color: black;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 24px;
-  z-index: 9999;
-  font-family: 'Zeyada', cursive;
-  cursor: pointer;
-">
-  Tap anywhere to begin 🎵
-</div>
+  <!-- Letter Papers -->
+  <div class="main">
+    <div class="paper paper1">
+      <img src="./assets/heart-svgrepo-com.svg" alt="" />
+    </div>
 
-<!-- Script -->
-<script>
-  const overlay = document.getElementById("start-overlay");
-  const audio = document.getElementById("bg-music");
+    <div class="paper paper2">
+      <p>Hello Hera, this is Alfre!</p>
+      <p>😜</p>
+    </div>
 
-  const startExperience = () => {
-    // Must be inside the same event handler to work on iOS
-    try {
-      audio.currentTime = 0;  // resets to beginning
-      audio.volume = 1.0;
-      audio.play().then(() => {
-        console.log("Music playing 🎶");
-      }).catch(err => {
-        console.warn("Play failed:", err);
+    <div class="paper paper3">
+      <p style="font-style: italic;">First of all,</p>
+    </div>
+
+    <div class="paper paper4">
+      <p>HAPPY BIRTHDAY,</p>
+    </div>
+
+    <div class="paper paper5">
+      <img src="happybirthday.jpg" alt="" />
+    </div>
+
+    <div class="paper paper6">
+      <p>I always wish you the best always no matter what you do.</p>
+    </div>
+
+    <div class="paper paper7">
+      <p>I'm sorry I couldn't be there to celebrate your special day with you &hearts;</p>
+    </div>
+
+    <div class="paper paper8">
+      <p>so, I've made this to hopefully make you happier even for a bit.</p>
+    </div>
+
+    <div class="paper paper9">
+      <p>Happy Birthday Hera</p>
+      <p>4/06/2025</p>
+      <p>By yours truly &hearts;</p>
+    </div>
+
+    <div class="paper paper10">
+      <img src="hera.jpg" alt="" />
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>我爱你, 爱人!!! &hearts; &hearts; &hearts;</p>
+  </footer>
+
+  <!-- Background Music -->
+  <audio id="bg-music" loop preload="auto">
+    <source src="la_vie_en_rose1.mp3" type="audio/mpeg" />
+    Your browser does not support the audio element.
+  </audio>
+
+  <!-- Tap-to-start overlay -->
+  <div id="start-overlay" style="
+    position: fixed;
+    inset: 0;
+    background: white;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    z-index: 9999;
+    font-family: 'Zeyada', cursive;
+    cursor: pointer;
+  ">
+    Tap anywhere to begin 🎵
+  </div>
+
+  <!-- Start Experience Script -->
+  <script>
+    const overlay = document.getElementById("start-overlay");
+    const audio = document.getElementById("bg-music");
+
+    function startExperience() {
+      audio.play().catch(() => {
+        console.warn("Audio failed to start.");
       });
-    } catch (e) {
-      console.log("Autoplay failed completely.", e);
+
+      overlay.style.display = "none";
+      document.removeEventListener("pointerdown", startExperience);
     }
 
-    // Remove overlay
-    overlay.style.display = "none";
-  };
+    document.addEventListener("pointerdown", startExperience);
+  </script>
 
-  // Ensure DOM is ready before attaching
-  window.addEventListener("DOMContentLoaded", () => {
-    document.addEventListener("pointerdown", startExperience, { once: true });
-  });
-</script>
+  <!-- Your draggable / interaction logic -->
+  <script src="script.js"></script>
+</body>
+</html>
