@@ -12,7 +12,7 @@
 </head>
 <body>
 
-  <!-- Your Papers -->
+  <!-- Letter Papers -->
   <div class="main">
     <div class="paper paper1">
       <img src="./assets/heart-svgrepo-com.svg" alt="" />
@@ -69,20 +69,41 @@
     Your browser does not support the audio element.
   </audio>
 
-  <!-- Music Autoplay Trigger Script -->
+  <!-- Tap-to-start overlay -->
+  <div id="start-overlay" style="
+    position: fixed;
+    inset: 0;
+    background: white;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    z-index: 9999;
+    font-family: 'Zeyada', cursive;
+    cursor: pointer;
+  ">
+    Tap anywhere to begin 🎵
+  </div>
+
+  <!-- Start Experience Script -->
   <script>
-    function startMusicOnce() {
-      const audio = document.getElementById("bg-music");
-      audio.play().catch(err => {
-        console.warn("Autoplay failed:", err);
+    const overlay = document.getElementById("start-overlay");
+    const audio = document.getElementById("bg-music");
+
+    function startExperience() {
+      audio.play().catch(() => {
+        console.warn("Audio failed to start.");
       });
-      document.removeEventListener("pointerdown", startMusicOnce);
+
+      overlay.style.display = "none";
+      document.removeEventListener("pointerdown", startExperience);
     }
 
-    document.addEventListener("pointerdown", startMusicOnce, { once: true });
+    document.addEventListener("pointerdown", startExperience);
   </script>
 
-  <!-- Your external JS -->
+  <!-- Your draggable / interaction logic -->
   <script src="script.js"></script>
 </body>
 </html>
